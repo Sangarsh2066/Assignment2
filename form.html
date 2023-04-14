@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Information Registration Form</title>
+	<!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div class="container mt-4">
+		<h1>Alumni and Student Registration Portal of Goa University</h1>
+		<form action="#" method="post" onsubmit="displayDetails(event)">
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" id="name" name="name" required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" class="form-control" id="email" name="email" required>
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone</label>
+				<input type="tel" class="form-control" id="phone" name="phone" required>
+			</div>
+			<div class="form-group">
+				<label for="course">Course</label>
+				<select class="form-control" id="course" name="course" required>
+					<option value="">Select a course</option>
+					<option value="MCA">MCA</option>
+					<option value="MSc I">MSc I</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Gender</label><br>
+				<div class="form-check form-check-inline">
+					<input type="radio" class="form-check-input" id="male" name="gender" value="Male" required>
+					<label class="form-check-label" for="male">Male</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input type="radio" class="form-check-input" id="female" name="gender" value="Female" required>
+					<label class="form-check-label" for="female">Female</label>
+				</div>
+			</div>
+            <div class="form-group">
+                <label for="grad_year">Graduation year:</label>
+                <input type="text" class="form-control" id="grad_year" placeholder="Enter your graduation year">
+              </div>
+              <div class="form-group">
+                <label for="occupation">Occupation:</label>
+                <input type="text" class="form-control" id="occupation" placeholder="Enter your occupation">
+              </div>
+              <div class="form-group">
+                <label for="interests">Interests:</label>
+                <textarea class="form-control" id="interests" rows="3" placeholder="Enter your interests"></textarea>
+              </div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+	<!-- Include Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script>
+		function displayDetails(event) {
+			event.preventDefault();
+			const name = document.getElementById("name").value;
+			const email = document.getElementById("email").value;
+			const phone = document.getElementById("phone").value;
+			const course = document.getElementById("course").value;
+			const gender = document.querySelector('input[name="gender"]:checked').value;
+            const grad_year = document.getElementById("grad_year").value;
+            const occupation = document.getElementById("occupation").value;
+
+			const details = {
+				name,
+				email,
+				phone,
+				course,
+				gender,
+                grad_year,
+                occupation
+			};
+
+			// Save the details to local storage
+			localStorage.setItem("studentDetails", JSON.stringify(details));
+
+			// Navigate to the details page
+			window.location.href = "details.html";
+		}
+	</script>
+</body>
+</html>
